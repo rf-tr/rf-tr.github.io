@@ -3329,16 +3329,16 @@ input, select, textarea {
 		}
 /* mi codigo */
 .my-button {
-  padding: 10px 20px;
+  padding: 20px 30px;
   background-color: #413BFF;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 7px;
   cursor: pointer;
 }
 
 .my-button:hover {
-  background-color: 3336ff;
+  background-color: #7019C4;
 }
 
 .my-button:active {
