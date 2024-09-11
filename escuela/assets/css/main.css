@@ -3327,23 +3327,6 @@ input, select, textarea {
 			}
 
 		}
-/* mi codigo */
-.my-button {
-  padding: 10px 20px;
-  background-color: #413BFF;
-  color: white;
-  border: none;
-  border-radius: 7px;
-  cursor: pointer;
-}
-
-.my-button:hover {
-  background-color: #7019C4;
-}
-
-.my-button:active {
-  background-color: #FFFFFF;
-}
 
 /* Estilo base para todos los botones */
 .boton {
@@ -3354,6 +3337,9 @@ input, select, textarea {
   cursor: pointer;
   font-size: 10px;
   transition: background-color 0.3s ease;
+  font-family: 'Georgia', serif;
+  font-size: 10px;
+  text-transform: uppercase;
 }
 
 /* Estilo cuando se pasa el ratón sobre el botón */
