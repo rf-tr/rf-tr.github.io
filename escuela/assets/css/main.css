@@ -3331,14 +3331,14 @@ input, select, textarea {
 /* Estilo base para todos los botones */
 .boton {
   background-color: #1437EA;
-  color: white;
+  color: black;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
-  font-size: 10px;
+  font-size: 13px;
   transition: background-color 0.3s ease;
   font-family: 'Georgia', serif;
-  font-size: 10px;
+  font-size: 13px;
   text-transform: uppercase;
 }
 /* Estilo cuando se pasa el ratón sobre el botón */
