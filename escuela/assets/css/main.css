@@ -3343,7 +3343,7 @@ input, select, textarea {
 }
 /* Estilo cuando se pasa el ratón sobre el botón */
 .boton:hover {
-  background-color: #1437EA;
+  background-color: #FFFFFF;
 }
 /* Botón con bordes normales */
 .boton.normal {
@@ -3352,7 +3352,7 @@ input, select, textarea {
 /* Botón con bordes redondeados */
 .boton.redondeado {
   border-radius: 5px;
-  background-color: #1437EA;
+  background-color: #FFFFFF;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }	
 .boton.sombreado:hover {
