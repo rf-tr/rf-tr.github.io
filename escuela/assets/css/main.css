@@ -3330,7 +3330,7 @@ input, select, textarea {
 
 /* Estilo base para todos los botones */
 .boton {
-  background-color: #4CAF50;
+  background-color: #1437EA;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -3344,7 +3344,7 @@ input, select, textarea {
 
 /* Estilo cuando se pasa el ratón sobre el botón */
 .boton:hover {
-  background-color: #45a049;
+  background-color: #1437EA;
 }
 
 /* Botón con bordes normales */
