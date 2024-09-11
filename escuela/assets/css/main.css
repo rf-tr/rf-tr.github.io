@@ -3341,28 +3341,20 @@ input, select, textarea {
   font-size: 10px;
   text-transform: uppercase;
 }
-
 /* Estilo cuando se pasa el ratón sobre el botón */
 .boton:hover {
   background-color: #1437EA;
 }
-
 /* Botón con bordes normales */
 .boton.normal {
   border-radius: 0;
 }
-
 /* Botón con bordes redondeados */
 .boton.redondeado {
-  border-radius: 20px;
-}
-
-/* Botón con sombra */
-.boton.sombreado {
   border-radius: 5px;
+  background-color: #1437EA;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
+}	
 .boton.sombreado:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
