@@ -3339,7 +3339,7 @@ input, select, textarea {
   transition: background-color 0.3s ease;
   font-family: 'Georgia', serif;
   font-size: 13px;
-  text-transform: uppercase;
+ /* text-transform: uppercase; */
 }
 /* Estilo cuando se pasa el ratón sobre el botón */
 .boton:hover {
