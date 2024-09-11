@@ -2469,7 +2469,7 @@ input, select, textarea {
 		text-align: center;
 		text-decoration: none;
 		text-overflow: ellipsis;
-		text-transform: uppercase;
+		text-transform: capitalize;
 		white-space: nowrap;
 	}
 
@@ -2897,7 +2897,7 @@ input, select, textarea {
 						font-size: 0.8em;
 						font-weight: 900;
 						letter-spacing: 0.35em;
-						text-transform: capitalize;
+						text-transform: uppercase;
 					}
 
 					#header nav ul li a[href="#menu"] {
