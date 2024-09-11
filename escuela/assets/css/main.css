@@ -2469,7 +2469,7 @@ input, select, textarea {
 		text-align: center;
 		text-decoration: none;
 		text-overflow: ellipsis;
-		text-transform: capitalize;
+		text-transform: uppercase;
 		white-space: nowrap;
 	}
 
