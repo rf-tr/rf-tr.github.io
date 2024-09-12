@@ -3335,3 +3335,43 @@ input, select, textarea {
   text-transform: capitalize;
   font-family: Arial, Helvetica, sans-serif;
 }	
+
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.button-list-container {
+    text-align: center;
+}
+
+.button-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.button-list li {
+    margin: 10px 0;
+}
+
+.btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
