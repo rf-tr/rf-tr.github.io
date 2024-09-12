@@ -3328,7 +3328,7 @@ input, select, textarea {
 
 		}
 
-/* Estilo base para todos los botones */
+/* Estilo base para todos los botones 
 .boton {
   background-color: #FFFFFF;
   color: black;
@@ -3337,25 +3337,30 @@ input, select, textarea {
   cursor: pointer;
   font-size: 13px;
   transition: background-color 0.3s ease;
-  /*font-family: 'Georgia', serif; */
+  /*font-family: 'Georgia', serif; 
   font-size: 13px;
   text-transform: capitalize;
-}
-/* Estilo cuando se pasa el ratón sobre el botón */
+}*/
+/* Estilo cuando se pasa el ratón sobre el botón 
 .boton:hover {
   background-color: #FFFFFF;
 }
-/* Botón con bordes normales */
+*/
+/* Botón con bordes normales 
 .boton.normal {
   border-radius: 0;
 }
+*/
 /* Botón con bordes redondeados */
+
 .boton.redondeado {
   border-radius: 5px;
   background-color: #FFFFFF;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-transform: capitalize;
 }	
+/*
 .boton.sombreado:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
+*/
