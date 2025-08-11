@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
         (function() {
-            emailjs.init("TU_USER_ID_DE_EMAILJS"); // Lo obtienes en emailjs.com
+            emailjs.init(ABP1QAoZ6gt_l92bQ); // Lo obtienes en emailjs.com
         })();
     </script>
 </head>
@@ -20,7 +20,7 @@
     <script>
         document.getElementById('formulario').addEventListener('submit', function(event) {
             event.preventDefault();
-            emailjs.send("TU_SERVICE_ID", "TU_TEMPLATE_ID", {
+            emailjs.send(service_arbiaol, template_ohvo40h, {
                 mensaje: this.mensaje.value
             }).then(function() {
                 alert("Mensaje enviado correctamente.");
