@@ -6,30 +6,32 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
         (function() {
-            emailjs.init(service_jqffota); // Lo obtienes en emailjs.com
+            emailjs.init(7EuHVTouDL8bBsmiA); // Reemplaza con tu Public Key de EmailJS
         })();
     </script>
 </head>
 <body>
     <h2>Formulario de envío</h2>
     <form id="formulario">
-        <textarea name="mensaje" placeholder="Escribe tu mensaje" required></textarea><br><br>
+        <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="6" cols="50" required></textarea><br><br>
         <button type="submit">Enviar</button>
     </form>
 
     <script>
         document.getElementById('formulario').addEventListener('submit', function(event) {
             event.preventDefault();
+            
             emailjs.send(service_jqffota, template_10z5xqx, {
                 mensaje: this.mensaje.value
-            }).then(function() {
-                alert("Mensaje enviado correctamente.");
+            })
+            .then(function() {
+                alert("✅ Mensaje enviado correctamente.");
+                document.getElementById('formulario').reset();
             }, function(error) {
-                alert("Error al enviar: " + JSON.stringify(error));
+                alert("❌ Error al enviar: " + JSON.stringify(error));
             });
         });
     </script>
 </body>
 </html>
-
 
