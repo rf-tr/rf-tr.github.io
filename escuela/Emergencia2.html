@@ -1,1 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Enviar mensaje</title>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("TU_USER_ID_DE_EMAILJS"); // Lo obtienes en emailjs.com
+        })();
+    </script>
+</head>
+<body>
+    <h2>Formulario de envío</h2>
+    <form id="formulario">
+        <textarea name="mensaje" placeholder="Escribe tu mensaje" required></textarea><br><br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        document.getElementById('formulario').addEventListener('submit', function(event) {
+            event.preventDefault();
+            emailjs.send("TU_SERVICE_ID", "TU_TEMPLATE_ID", {
+                mensaje: this.mensaje.value
+            }).then(function() {
+                alert("Mensaje enviado correctamente.");
+            }, function(error) {
+                alert("Error al enviar: " + JSON.stringify(error));
+            });
+        });
+    </script>
+</body>
+</html>
 
