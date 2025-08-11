@@ -1,33 +1,37 @@
-	<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Emergencia SOS</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		</head>
-	<body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Enviar mensaje</title>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("T3SrCZk8ZOd63CzjL"); // Reemplaza con tu Public Key de EmailJS
+        })();
+    </script>
+</head>
+<body>
     <h2>Formulario de envío</h2>
     <form id="formulario">
-        <textarea name="mensaje" rows="6" cols="50" placeholder="Escribe tu mensaje aquí..." required></textarea><br><br>
+        <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="6" cols="50" required></textarea><br><br>
         <button type="submit">Enviar</button>
     </form>
 
     <script>
-        document.getElementById('formulario').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const mensaje = e.target.mensaje.value;
-
-            const res = await fetch('/enviar', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ mensaje })
+        document.getElementById('formulario').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            emailjs.send("service_lglte6i", "template_u6c7kym", {
+                mensaje: this.mensaje.value
+            })
+            .then(function() {
+                alert("✅ Mensaje enviado correctamente.");
+                document.getElementById('formulario').reset();
+            }, function(error) {
+                alert("❌ Error al enviar: " + JSON.stringify(error));
             });
-
-            const data = await res.text();
-            alert(data);
         });
     </script>
 </body>
-</html>	
+</html>
+
