@@ -3,18 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Enviar mensaje</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;   /* Centrado horizontal */
+            align-items: center;       /* Centrado vertical */
+            height: 100vh;             /* Alto total de la ventana */
+            background-color: #f4f4f4; /* Color de fondo opcional */
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 350px;
+        }
+        textarea {
+            width: 100%;
+            resize: none;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
         (function() {
-            // ⬅️ Pon aquí tu Public Key
-            emailjs.init(T3SrCZk8ZOd63CzjL);
+            emailjs.init(T3SrCZk8ZOd63CzjL); // Reemplaza con tu Public Key
         })();
     </script>
 </head>
 <body>
-    <h2>Formulario de envío</h2>
     <form id="formulario">
-        <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="6" cols="50" required></textarea><br><br>
+        <h2>Formulario de envío</h2>
+        <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="6" required></textarea><br><br>
         <button type="submit">Enviar</button>
     </form>
 
@@ -22,7 +59,6 @@
         document.getElementById('formulario').addEventListener('submit', function(event) {
             event.preventDefault();
             
-            // ⬅️ Cambia estos valores por los tuyos
             const serviceID = service_a41svwh;
             const templateID = template_9d94fwi;
 
@@ -39,3 +75,4 @@
     </script>
 </body>
 </html>
+
