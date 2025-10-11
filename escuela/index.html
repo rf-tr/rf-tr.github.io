@@ -1,241 +1,37 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Escuela Villa Convento Viejo</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-  <link rel="icon" href="images/building_city_icon_263719.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <title>Test Font Awesome</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Carga de Font Awesome para íconos -->
+  <!-- Carga oficial de Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Estilos adicionales -->
   <style>
     body {
-      background-color: #5e8aa8;
-      font-family: "Segoe UI", Roboto, sans-serif;
-      margin: 0;
-      padding: 0;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    h1 {
-      font-size: 1.8rem;
+      font-family: Arial, sans-serif;
       text-align: center;
-      color: #fff;
-      margin-bottom: 20px;
+      margin-top: 50px;
     }
-
-    /* Grid responsivo */
-    .tiles {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
+    .icons a {
+      font-size: 2rem;
+      margin: 0 15px;
+      color: #5e8aa8;
+      text-decoration: none;
     }
-
-    .tiles article {
-      background: #ffffff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s, color 0.3s;
-    }
-
-    .tiles article:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-
-    .tiles .image img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-    }
-
-    .tiles h2 {
-      font-size: 1rem;
-      margin: 10px;
+    .icons a:hover {
       color: #333;
-    }
-
-    .tiles .content {
-      font-size: 0.85rem;
-      color: #555;
-      margin: 0 10px 15px;
-    }
-
-    /* Footer */
-    #footer {
-      background-color: #5e8aa8;
-      text-align: center;
-      padding: 20px;
-      color: #fff;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    #footer h2 {
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
-
-    #footer .icons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
-
-    #footer .icons a {
-      color: #fff;
-      font-size: 1.5rem;
-      transition: color 0.3s;
-    }
-
-    #footer .icons a:hover {
-      color: #222;
-    }
-
-    /* Header */
-    #header .title {
-      font-size: 1.1rem;
-      color: #fff;
-    }
-
-    #header .symbol img {
-      width: 40px;
-      height: auto;
-      vertical-align: middle;
-    }
-
-    /* BOTÓN DARK MODE */
-    .dark-toggle {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background: #fff;
-      border: none;
-      border-radius: 50%;
-      padding: 10px;
-      cursor: pointer;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-      transition: background 0.3s, color 0.3s;
-      z-index: 1000;
-    }
-
-    .dark-toggle i {
-      font-size: 18px;
-      color: #333;
-    }
-
-    /* DARK MODE */
-    body.dark {
-      background: #121212;
-      color: #eee;
-    }
-
-    body.dark h1 {
-      color: #eee;
-    }
-
-    body.dark .tiles article {
-      background: #1e1e1e;
-      color: #eee;
-    }
-
-    body.dark .tiles h2 {
-      color: #fff;
-    }
-
-    body.dark .tiles .content {
-      color: #bbb;
-    }
-
-    body.dark #footer {
-      background: #1e1e1e;
-      color: #eee;
-    }
-
-    body.dark #footer .icons a {
-      color: #eee;
-    }
-
-    body.dark .dark-toggle {
-      background: #333;
-    }
-
-    body.dark .dark-toggle i {
-      color: #fff;
     }
   </style>
 </head>
-<body class="is-preload">
-  <div id="wrapper">
-    <!-- Botón Dark Mode -->
-    <button class="dark-toggle" id="darkModeBtn"><i class="fas fa-moon"></i></button>
-
-    <!-- Header -->
-    <header id="header">
-      <div class="inner">
-        <a href="index.html" class="logo">
-          <span class="symbol"><img src="images/insignia.png" alt="Logo" /></span>
-          <span class="title">Escuela Villa Convento Viejo</span>
-        </a>
-      </div>
-    </header>
-
-    <!-- Main -->
-    <div id="main">
-      <div class="inner">
-        <header>
-          <h1>Links para acceder rápidamente</h1>
-        </header>
-
-        <!-- Aquí van los artículos con tus links (igual que antes) -->
-        <!-- ... mantengo todos los artículos que ya tenías ... -->
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <footer id="footer">
-      <div class="inner">
-        <section>
-          <h2>Síguenos en nuestras redes</h2>
-          <ul class="icons">
-            <li><a href="https://www.facebook.com/escuelavillaconventoviejo/" target="_blank" class="fab fa-facebook-f"></a></li>
-            <li><a href="https://www.instagram.com/villa_convento_viejo_oficial" target="_blank" class="fab fa-instagram"></a></li>
-            <li><a href="https://www.youtube.com/" target="_blank" class="fab fa-youtube"></a></li>
-          </ul>
-        </section>
-        <ul class="copyright">
-          <li>&copy; Villa Convento Viejo, Las Rosas #10, Chimbarongo</li>
-        </ul>
-      </div>
-    </footer>
+<body>
+  <h1>Prueba de Íconos</h1>
+  <div class="icons">
+    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+    <a href="#"><i class="fa-solid fa-moon"></i></a>
   </div>
-
-  <!-- Scripts -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
-
-  <!-- Script Dark Mode -->
-  <script>
-    const btn = document.getElementById("darkModeBtn");
-    btn.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      const icon = btn.querySelector("i");
-      if (document.body.classList.contains("dark")) {
-        icon.classList.remove("fa-moon");
-        icon.classList.add("fa-sun");
-      } else {
-        icon.classList.remove("fa-sun");
-        icon.classList.add("fa-moon");
-      }
-    });
-  </script>
 </body>
 </html>
