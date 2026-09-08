@@ -5,179 +5,772 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RK_DESING | Productos Personalizados</title>
   <meta name="description" content="RK_DESING ofrece poleras, jockeys, vasos y artículos personalizados en vinilo textil y de corte. Dale estilo a tu vida y a tu emprendimiento." />
-  <link rel="icon" href="images/fulls/LOGO.PNG" type="image/png">
+  <meta name="keywords" content="poleras personalizadas, jockeys, vasos grabados, vinilo textil, regalos personalizados, emprendimiento" />
+  <meta name="author" content="RK_DESING" />
+  <meta name="theme-color" content="#0d1117" />
 
-  <!-- Tipografía moderna -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <!-- Open Graph: mejora cómo se ve al compartir en redes -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="RK_DESING | Productos Personalizados" />
+  <meta property="og:description" content="Poleras, jockeys, vasos y más. Estampados en vinilo textil y gráficas en vinilo de corte." />
+  <meta property="og:image" content="images/fulls/LOGO.PNG" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Estilos base -->
+  <link rel="icon" href="images/fulls/LOGO.PNG" type="image/png" />
+
+  <!-- Tipografía -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome 6 (CDN gratuito y confiable) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
   <style>
+    /* ===== Variables ===== */
+    :root {
+      --primary: #00c3ff;
+      --primary-dark: #0072ff;
+      --secondary: #7b2ff7;
+      --dark: #0d1117;
+      --light: #f8f9fa;
+      --text: #333;
+      --text-muted: #666;
+      --radius: 18px;
+      --gradient: linear-gradient(90deg, #00c3ff, #0072ff);
+      --transition: all .3s ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Poppins', sans-serif;
-      margin: 0;
-      background: #f8f9fa;
-      color: #333;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    header {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: linear-gradient(135deg, #111, #333);
-      color: white;
+    img { max-width: 100%; display: block; }
+
+    ::selection { background: var(--primary); color: #fff; }
+
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #eee; }
+    ::-webkit-scrollbar-thumb { background: var(--gradient); border-radius: 5px; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    section[id], header[id] { scroll-margin-top: 80px; }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #00c3ff, #7b2ff7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+    /* ===== Animaciones ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50%      { transform: translate(30px, -40px) scale(1.1); }
+    }
+    .reveal { opacity: 0; }
+    .reveal.visible { animation: fadeUp .7s cubic-bezier(.2,.7,.3,1) both; }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      position: fixed; inset: 0 0 auto 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2rem;
+      transition: background .3s, padding .3s, box-shadow .3s;
+    }
+    .navbar.scrolled {
+      background: rgba(13,17,23,.92);
+      backdrop-filter: blur(12px);
+      padding: .7rem 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,.25);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: .6rem;
+      color: #fff; font-weight: 700; font-size: 1.1rem; text-decoration: none;
+    }
+    .nav-logo img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,.85); text-decoration: none;
+      font-weight: 500; font-size: .95rem; position: relative;
+      transition: color .3s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; bottom: -6px;
+      width: 0; height: 2px; border-radius: 2px;
+      background: var(--gradient); transition: width .3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+    .nav-toggle {
+      display: none; background: none; border: none;
+      color: #fff; font-size: 1.4rem; cursor: pointer;
     }
 
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.85;
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; z-index: 1001; }
+      .nav-links {
+        position: fixed; top: 0; right: -100%;
+        height: 100vh; width: min(70vw, 300px);
+        flex-direction: column; gap: 1.5rem;
+        background: rgba(13,17,23,.97);
+        padding: 5rem 2rem;
+        transition: right .35s ease;
+      }
+      .nav-links.open { right: 0; }
     }
 
-    .icons {
-      list-style: none;
-      padding: 0;
-      margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative; overflow: hidden;
+      background: var(--dark); color: #fff;
+      padding: 6rem 1.5rem 5rem;
+    }
+    .blob { position: absolute; border-radius: 50%; filter: blur(90px); }
+    .blob-1 { width: 420px; height: 420px; background: #00c3ff; opacity: .3; top: -120px; left: -120px; animation: float 9s ease-in-out infinite; }
+    .blob-2 { width: 380px; height: 380px; background: #7b2ff7; opacity: .3; bottom: -100px; right: -100px; animation: float 11s ease-in-out infinite reverse; }
+    .blob-3 { width: 260px; height: 260px; background: #00ffc3; opacity: .12; top: 40%; left: 60%; animation: float 13s ease-in-out infinite; }
+
+    .hero-content { position: relative; z-index: 2; max-width: 820px; }
+    .hero-content > * { animation: fadeUp .8s ease both; }
+    .hero-content > *:nth-child(2) { animation-delay: .15s; }
+    .hero-content > *:nth-child(3) { animation-delay: .3s; }
+    .hero-content > *:nth-child(4) { animation-delay: .45s; }
+
+    .hero-eyebrow {
+      display: inline-block; padding: .45rem 1.2rem;
+      border: 1px solid rgba(0,195,255,.35); border-radius: 50px;
+      background: rgba(0,195,255,.08); color: var(--primary);
+      font-size: .85rem; letter-spacing: 1px; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 800; line-height: 1.15; margin-bottom: 1.2rem;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,.75); margin-bottom: 2.2rem;
+    }
+    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    .wave {
+      position: absolute; bottom: -1px; left: 0;
+      width: 100%; height: 80px; z-index: 1;
     }
 
-    .icons a {
-      color: white;
-      font-size: 1.5rem;
-      transition: color 0.3s;
+    /* ===== Botones ===== */
+    .btn {
+      display: inline-flex; align-items: center; gap: .6rem;
+      padding: .9rem 1.9rem; border-radius: 50px;
+      font-weight: 600; font-size: .95rem; text-decoration: none;
+      transition: transform .3s, box-shadow .3s, background .3s;
+    }
+    .btn-primary {
+      background: var(--gradient); color: #fff;
+      box-shadow: 0 8px 24px rgba(0,150,255,.35);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,150,255,.5); }
+    .btn-ghost { border: 1.5px solid rgba(255,255,255,.35); color: #fff; }
+    .btn-ghost:hover { background: rgba(255,255,255,.1); transform: translateY(-3px); }
+
+    /* ===== Secciones ===== */
+    .section { padding: 5.5rem 0; }
+    .section-header { text-align: center; max-width: 650px; margin: 0 auto 3rem; }
+    .section-tag {
+      display: inline-block; font-size: .8rem; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--primary-dark); margin-bottom: .6rem;
+    }
+    .section-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--dark); margin-bottom: .8rem;
+    }
+    .section-header p { color: var(--text-muted); }
+
+    /* ===== Filtros ===== */
+    .filters {
+      display: flex; justify-content: center; gap: .7rem;
+      flex-wrap: wrap; margin-bottom: 2.5rem;
+    }
+    .filter-btn {
+      padding: .55rem 1.4rem; border-radius: 50px;
+      border: 1.5px solid #e0e4e9; background: #fff; color: #555;
+      font-family: inherit; font-weight: 500; cursor: pointer; transition: var(--transition);
+    }
+    .filter-btn:hover { border-color: var(--primary); color: var(--primary-dark); }
+    .filter-btn.active {
+      background: var(--gradient); color: #fff;
+      border-color: transparent; box-shadow: 0 6px 16px rgba(0,150,255,.3);
     }
 
-    .icons a:hover {
-      color: #00c3ff;
+    /* ===== Catálogo ===== */
+    .grid {
+      display: grid; gap: 1.8rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
-
-    #thumbnails {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem;
-      padding: 3rem;
-      max-width: 1200px;
-      margin: auto;
+    .card {
+      background: #fff; border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0,0,0,.07);
+      transition: transform .35s, box-shadow .35s;
     }
-
-    article {
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
+    .card:hover { transform: translateY(-10px); box-shadow: 0 18px 40px rgba(0,0,0,.14); }
+    .card.hide { display: none; }
+    .card-img { position: relative; overflow: hidden; aspect-ratio: 4/3; cursor: zoom-in; }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .card:hover .card-img img { transform: scale(1.08); }
+    .card-overlay {
+      position: absolute; inset: 0;
+      background: rgba(13,17,23,.45); color: #fff; font-size: 1.6rem;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .3s;
     }
-
-    article:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    .card:hover .card-overlay { opacity: 1; }
+    .card-tag {
+      position: absolute; top: 1rem; left: 1rem;
+      background: rgba(0,195,255,.92); color: #fff;
+      font-size: .72rem; font-weight: 600; letter-spacing: .5px;
+      text-transform: uppercase; padding: .3rem .85rem; border-radius: 50px;
     }
-
-    article img {
-      width: 100%;
-      display: block;
-      transition: transform 0.4s;
+    .card-body { padding: 1.4rem 1.4rem 1.6rem; }
+    .card-body h3 { font-size: 1.15rem; color: var(--dark); margin-bottom: .5rem; }
+    .card-body p { font-size: .92rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .card-link {
+      display: inline-flex; align-items: center; gap: .4rem;
+      color: var(--primary-dark); font-weight: 600; font-size: .88rem;
+      text-decoration: none; transition: gap .3s;
     }
+    .card-link:hover { gap: .75rem; }
 
-    article:hover img {
-      transform: scale(1.05);
+    /* ===== Beneficios ===== */
+    .features { background: #fff; }
+    .features-grid {
+      display: grid; gap: 1.8rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     }
-
-    article h2 {
-      font-size: 1.3rem;
-      margin: 1rem;
-      color: #111;
+    .feature {
+      text-align: center; padding: 2.2rem 1.5rem;
+      background: var(--light); border-radius: var(--radius);
+      border: 1px solid transparent; transition: var(--transition);
     }
-
-    article p {
-      margin: 0 1rem 1.5rem;
-      font-size: 0.95rem;
-      color: #555;
+    .feature:hover {
+      transform: translateY(-6px); background: #fff;
+      border-color: #eef1f5; box-shadow: 0 14px 30px rgba(0,0,0,.08);
     }
+    .feature i {
+      width: 64px; height: 64px; margin-bottom: 1.1rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; border-radius: var(--radius); color: #fff;
+      background: linear-gradient(135deg, #00c3ff, #7b2ff7);
+    }
+    .feature h3 { font-size: 1.05rem; color: var(--dark); margin-bottom: .5rem; }
+    .feature p { font-size: .88rem; color: var(--text-muted); }
 
+    /* ===== Proceso (sección oscura) ===== */
+    .process { background: var(--dark); color: #fff; }
+    .process .section-tag { color: var(--primary); }
+    .process .section-header h2 { color: #fff; }
+    .process .section-header p { color: rgba(255,255,255,.65); }
+    .steps {
+      display: grid; gap: 1.8rem; list-style: none;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .step {
+      text-align: center; padding: 2rem 1.5rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius); transition: var(--transition);
+    }
+    .step:hover { background: rgba(255,255,255,.07); transform: translateY(-5px); }
+    .step-num {
+      width: 52px; height: 52px; margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; font-weight: 700; font-size: 1.2rem;
+      background: var(--gradient); color: #fff;
+    }
+    .step h3 { font-size: 1.05rem; margin-bottom: .5rem; }
+    .step p { font-size: .88rem; color: rgba(255,255,255,.65); }
+
+    /* ===== Contacto ===== */
+    .contact-grid {
+      display: grid; gap: 1.8rem; max-width: 900px; margin: 0 auto;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .contact-card {
+      background: #fff; border-radius: var(--radius);
+      padding: 2.3rem 1.5rem; text-align: center; text-decoration: none;
+      color: var(--text); box-shadow: 0 4px 18px rgba(0,0,0,.07);
+      transition: var(--transition);
+    }
+    .contact-card:hover { transform: translateY(-8px); box-shadow: 0 16px 36px rgba(0,0,0,.12); }
+    .contact-card i {
+      width: 64px; height: 64px; margin-bottom: 1rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 1.7rem; border-radius: 50%;
+    }
+    .cc-wa i { background: rgba(37,211,102,.12); color: #25d366; }
+    .cc-ig i { background: rgba(228,64,95,.12); color: #e4405f; }
+    .cc-mail i { background: rgba(0,195,255,.12); color: #009ed1; }
+    .contact-card h3 { font-size: 1.05rem; color: var(--dark); margin-bottom: .4rem; }
+    .contact-card span { font-size: .88rem; color: var(--text-muted); }
+
+    /* ===== Footer ===== */
     footer {
-      background: #111;
-      color: #aaa;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      font-size: 0.9rem;
+      background: var(--dark); color: rgba(255,255,255,.6);
+      text-align: center; padding: 2.5rem 1.5rem; font-size: .9rem;
+    }
+    .footer-social { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.3rem; }
+    .footer-social a {
+      width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; border: 1px solid rgba(255,255,255,.15);
+      color: #fff; transition: var(--transition);
+    }
+    .footer-social a:hover {
+      background: var(--gradient); border-color: transparent; transform: translateY(-3px);
     }
 
-    footer a {
-      color: #00c3ff;
-      text-decoration: none;
+    /* ===== WhatsApp flotante ===== */
+    .whatsapp-btn {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      width: 60px; height: 60px; border-radius: 50%;
+      background: #25d366; color: #fff; font-size: 1.7rem;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; animation: pulse 2.5s infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 6px 20px rgba(37,211,102,.45), 0 0 0 0 rgba(37,211,102,.4); }
+      70%  { box-shadow: 0 6px 20px rgba(37,211,102,.45), 0 0 0 18px rgba(37,211,102,0); }
+      100% { box-shadow: 0 6px 20px rgba(37,211,102,.45), 0 0 0 0 rgba(37,211,102,0); }
     }
 
-    /* Botón flotante de contacto */
-    .contacto-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #00c3ff;
-      color: white;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: background 0.3s;
+    /* ===== Volver arriba ===== */
+    .top-btn {
+      position: fixed; bottom: 24px; left: 24px; z-index: 999;
+      width: 48px; height: 48px; border-radius: 50%; border: none;
+      background: var(--dark); color: #fff; font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transform: translateY(10px);
+      transition: var(--transition);
+    }
+    .top-btn.show { opacity: 1; visibility: visible; transform: none; }
+    .top-btn:hover { background: var(--primary-dark); }
+
+    /* ===== Lightbox ===== */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 2000; padding: 2rem;
+      background: rgba(10,12,16,.93);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s;
+    }
+    .lightbox.open { opacity: 1; visibility: visible; }
+    .lightbox img {
+      max-width: 88vw; max-height: 78vh;
+      border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+    .lightbox-caption {
+      position: absolute; bottom: 2.2rem; left: 50%; transform: translateX(-50%);
+      color: #fff; font-size: .95rem; white-space: nowrap;
+    }
+    .lb-close, .lb-prev, .lb-next {
+      position: absolute; border: none; color: #fff; cursor: pointer;
+      background: rgba(255,255,255,.1); transition: background .3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lb-close { top: 1.3rem; right: 1.3rem; width: 44px; height: 44px; border-radius: 50%; font-size: 1.2rem; }
+    .lb-prev, .lb-next { top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; font-size: 1.3rem; }
+    .lb-prev { left: 1.3rem; }
+    .lb-next { right: 1.3rem; }
+    .lb-close:hover, .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,.25); }
+
+    @media (max-width: 600px) {
+      .lb-prev, .lb-next { top: auto; bottom: 4.5rem; }
     }
 
-    .contacto-btn:hover {
-      background: #009ed1;
+    /* ===== Accesibilidad ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      html { scroll-behavior: auto; }
     }
   </style>
-
-  <!-- FontAwesome -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <header>
-    <h1>Nuestros Productos</h1>
-    <p>Estampados en vinilo textil y gráficas en vinilo de corte</p>
-    <ul class="icons">
-      <li><a href="https://instagram.com/rk_desing" target="_blank"><i class="fab fa-instagram"></i></a></li>
-      <li><a href="mailto:contacto@rkdesing.cl"><i class="fas fa-envelope"></i></a></li>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <a href="#inicio" class="nav-logo">
+      <img src="images/fulls/LOGO.PNG" alt="Logo RK_DESING" onerror="this.style.display='none'" />
+      <span>RK_<span class="gradient-text">DESING</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#proceso">Cómo funciona</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="inicio">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+    <div class="hero-content">
+      <span class="hero-eyebrow"><i class="fas fa-wand-magic-sparkles"></i> Personalización creativa</span>
+      <h1>Dale estilo a tu vida y a tu <span class="gradient-text">emprendimiento</span></h1>
+      <p class="hero-sub">Poleras, jockeys, vasos y más, personalizados con vinilo textil y de corte. Diseños únicos, hechos con 💙 para cada ocasión.</p>
+      <div class="hero-cta">
+        <a href="#productos" class="btn btn-primary">Ver productos <i class="fas fa-arrow-down"></i></a>
+        <a href="https://wa.me/56912345678?text=Hola!%20Quiero%20hacer%20una%20consulta" class="btn btn-ghost" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Cotizar ahora</a>
+      </div>
+    </div>
+    <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,64 C240,120 480,0 720,32 C960,64 1200,110 1440,48 L1440,120 L0,120 Z" fill="#f8f9fa"/>
+    </svg>
   </header>
 
-  <main id="thumbnails">
-    <article>
-      <img src="images/thumbs/01.jpg" alt="Vasos grabados personalizados">
-      <h2>Grabado de Vasos</h2>
-      <p>Personaliza tus vasos y haz de cada ocasión algo único.</p>
-    </article>
-    <article>
-      <img src="images/thumbs/02.jpg" alt="Polera personalizada">
-      <h2>Polera Personalizada</h2>
-      <p>Lleva tu personaje favorito contigo en una polera diseñada a tu gusto.</p>
-    </article>
-    <article>
-      <img src="images/thumbs/04.jpg" alt="Bolsas personalizadas para cumpleaños">
-      <h2>Bolsas para Cumpleaños</h2>
-      <p>Sorprende a tus invitados con bolsas únicas y divertidas.</p>
-    </article>
-    <!-- 👉 Aquí seguirías agregando el resto de tus productos -->
-  </main>
+  <!-- ===== CATÁLOGO ===== -->
+  <section id="productos" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Catálogo</span>
+        <h2>Nuestros <span class="gradient-text">Productos</span></h2>
+        <p>Cada pieza se personaliza según tus ideas. Haz clic en una imagen para verla en grande.</p>
+      </div>
 
+      <div class="filters reveal">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="poleras">Poleras</button>
+        <button class="filter-btn" data-filter="jockeys">Jockeys</button>
+        <button class="filter-btn" data-filter="vasos">Vasos</button>
+        <button class="filter-btn" data-filter="eventos">Eventos</button>
+      </div>
+
+      <div class="grid stagger" id="gallery">
+        <article class="card reveal" data-category="vasos" data-full="images/fulls/01.jpg">
+          <div class="card-img">
+            <img src="images/thumbs/01.jpg" alt="Vasos grabados personalizados" loading="lazy" />
+            <div class="card-overlay"><i class="fas fa-expand"></i></div>
+            <span class="card-tag">Vasos</span>
+          </div>
+          <div class="card-body">
+            <h3>Grabado de Vasos</h3>
+            <p>Personaliza tus vasos y haz de cada ocasión algo único.</p>
+            <a class="card-link" href="https://wa.me/56912345678?text=Hola!%20Quiero%20cotizar%20vasos%20personalizados" target="_blank" rel="noopener">Cotizar por WhatsApp <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="card reveal" data-category="poleras" data-full="images/fulls/02.jpg">
+          <div class="card-img">
+            <img src="images/thumbs/02.jpg" alt="Polera personalizada" loading="lazy" />
+            <div class="card-overlay"><i class="fas fa-expand"></i></div>
+            <span class="card-tag">Poleras</span>
+          </div>
+          <div class="card-body">
+            <h3>Polera Personalizada</h3>
+            <p>Lleva tu personaje favorito contigo en una polera diseñada a tu gusto.</p>
+            <a class="card-link" href="https://wa.me/56912345678?text=Hola!%20Quiero%20cotizar%20una%20polera%20personalizada" target="_blank" rel="noopener">Cotizar por WhatsApp <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- 👇 Ejemplo nuevo: ajusta o elimina si no tienes estas imágenes -->
+        <article class="card reveal" data-category="jockeys" data-full="images/fulls/03.jpg">
+          <div class="card-img">
+            <img src="images/thumbs/03.jpg" alt="Jockey personalizado" loading="lazy" />
+            <div class="card-overlay"><i class="fas fa-expand"></i></div>
+            <span class="card-tag">Jockeys</span>
+          </div>
+          <div class="card-body">
+            <h3>Jockey Personalizado</h3>
+            <p>Protege del sol con estilo y tu diseño favorito bordado en vinilo.</p>
+            <a class="card-link" href="https://wa.me/56912345678?text=Hola!%20Quiero%20cotizar%20un%20jockey%20personalizado" target="_blank" rel="noopener">Cotizar por WhatsApp <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="card reveal" data-category="eventos" data-full="images/fulls/04.jpg">
+          <div class="card-img">
+            <img src="images/thumbs/04.jpg" alt="Bolsas personalizadas para cumpleaños" loading="lazy" />
+            <div class="card-overlay"><i class="fas fa-expand"></i></div>
+            <span class="card-tag">Eventos</span>
+          </div>
+          <div class="card-body">
+            <h3>Bolsas para Cumpleaños</h3>
+            <p>Sorprende a tus invitados con bolsas únicas y divertidas.</p>
+            <a class="card-link" href="https://wa.me/56912345678?text=Hola!%20Quiero%20cotizar%20bolsas%20para%20cumplea%C3%B1os" target="_blank" rel="noopener">Cotizar por WhatsApp <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="card reveal" data-category="poleras" data-full="images/fulls/05.jpg">
+          <div class="card-img">
+            <img src="images/thumbs/05.jpg" alt="Poleras para parejas" loading="lazy" />
+            <div class="card-overlay"><i class="fas fa-expand"></i></div>
+            <span class="card-tag">Poleras</span>
+          </div>
+          <div class="card-body">
+            <h3>Poleras para Parejas</h3>
+            <p>Diseños combinados para celebrates juntos lo que más quieren.</p>
+            <a class="card-link" href="https://wa.me/56912345678?text=Hola!%20Quiero%20cotizar%20poleras%20de%20pareja" target="_blank" rel="noopener">Cotizar por WhatsApp <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="card reveal" data-category="vasos" data-full="images/fulls/06.jpg">
+          <div class="card-img">
+            <img src="images/thumbs/06.jpg" alt="Tazón sorpresa personalizado" loading="lazy" />
+            <div class="card-overlay"><i class="fas fa-expand"></i></div>
+            <span class="card-tag">Vasos</span>
+          </div>
+          <div class="card-body">
+            <h3>Tazón Sorpresa</h3>
+            <p>El regalo perfecto para mamá, papá, amigos o esa persona especial.</p>
+            <a class="card-link" href="https://wa.me/56912345678?text=Hola!%20Quiero%20cotizar%20un%20taz%C3%B3n%20personalizado" target="_blank" rel="noopener">Cotizar por WhatsApp <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BENEFICIOS ===== -->
+  <section class="section features">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">¿Por qué elegirnos?</span>
+        <h2>Calidad que se <span class="gradient-text">nota</span></h2>
+      </div>
+      <div class="features-grid stagger">
+        <div class="feature reveal">
+          <i class="fas fa-palette"></i>
+          <h3>100% Personalizado</h3>
+          <p>Creamos diseños desde cero según tu idea, foto o estilo favorito.</p>
+        </div>
+        <div class="feature reveal">
+          <i class="fas fa-gem"></i>
+          <h3>Materiales Premium</h3>
+          <p>Vinilo textil y de corte de alta durabilidad, resistentes al lavado.</p>
+        </div>
+        <div class="feature reveal">
+          <i class="fas fa-truck-fast"></i>
+          <h3>Entrega Rápida</h3>
+          <p>Tu pedido listo en tiempo récord para que no te quedes sin regalo.</p>
+        </div>
+        <div class="feature reveal">
+          <i class="fas fa-comments"></i>
+          <h3>Atención Cercana</h3>
+          <p>Te acompañamos en todo el proceso por WhatsApp hasta que quedes feliz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESO ===== -->
+  <section id="proceso" class="section process">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Fácil y rápido</span>
+        <h2>¿Cómo funciona?</h2>
+        <p>Pide tu producto personalizado en solo 4 pasos.</p>
+      </div>
+      <ol class="steps stagger">
+        <li class="step reveal">
+          <span class="step-num">1</span>
+          <h3>Elige tu producto</h3>
+          <p>Polera, jockey, vaso, bolsa… ¡tú decides!</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-num">2</span>
+          <h3>Envía tu idea</h3>
+          <p>Mándanos tu diseño, foto o simplemente cuéntanos qué imaginas.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-num">3</span>
+          <h3>Lo creamos</h3>
+          <p>Diseñamos y estampamos tu producto con detalles de calidad.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-num">4</span>
+          <h3>Recíbelo</h3>
+          <p>Coordinamos la entrega para que lo disfrutes lo antes posible.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section id="contacto" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Contacto</span>
+        <h2>¿Tienes una idea? <span class="gradient-text">¡Hablemos!</span></h2>
+        <p>Escríbenos por el canal que prefieras y te respondemos a la brevedad.</p>
+      </div>
+      <div class="contact-grid stagger">
+        <a class="contact-card cc-wa reveal" href="https://wa.me/56912345678" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i>
+          <h3>WhatsApp</h3>
+          <span>+56 9 1234 5678</span>
+        </a>
+        <a class="contact-card cc-ig reveal" href="https://instagram.com/rk_desing" target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i>
+          <h3>Instagram</h3>
+          <span>@rk_desing</span>
+        </a>
+        <a class="contact-card cc-mail reveal" href="mailto:contacto@rkdesing.cl">
+          <i class="fas fa-envelope"></i>
+          <h3>Correo</h3>
+          <span>contacto@rkdesing.cl</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
   <footer>
-    <p>&copy; 2025 RK_DESING | Diseñado con 💙</p>
-    <p><a href="https://instagram.com/rk_desing" target="_blank">@rk_desing</a></p>
+    <div class="footer-social">
+      <a href="https://instagram.com/rk_desing" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/56912345678" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:contacto@rkdesing.cl" aria-label="Correo"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p>&copy; 2025 RK_DESING — Todos los derechos reservados</p>
+    <p>Hecho con 💙 y mucho vinilo</p>
   </footer>
 
-  <!-- Botón flotante -->
-  <a href="https://wa.me/56912345678" class="contacto-btn" target="_blank">
+  <!-- ===== Botones flotantes ===== -->
+  <a href="https://wa.me/56912345678?text=Hola!%20Vengo%20de%20su%20p%C3%A1gina%20web" class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
+  <button class="top-btn" id="topBtn" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></button>
 
+  <!-- ===== Lightbox ===== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de imágenes">
+    <button class="lb-close" id="lbClose" aria-label="Cerrar"><i class="fas fa-xmark"></i></button>
+    <button class="lb-prev" id="lbPrev" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+    <img id="lbImg" src="" alt="" />
+    <button class="lb-next" id="lbNext" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+    <p class="lightbox-caption" id="lbCaption"></p>
+  </div>
+
+  <script>
+    /* ===== Navbar, enlace activo y botón "volver arriba" ===== */
+    const navbar = document.getElementById('navbar');
+    const topBtn = document.getElementById('topBtn');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+      topBtn.classList.toggle('show', window.scrollY > 500);
+
+      let current = 'inicio';
+      document.querySelectorAll('section[id], header[id]').forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 150) current = sec.id;
+      });
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }, { passive: true });
+
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* ===== Menú móvil ===== */
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    function closeMenu() {
+      navLinks.classList.remove('open');
+      navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.innerHTML = open ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    /* ===== Filtros del catálogo ===== */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = [...document.querySelectorAll('#gallery .card')];
+
+    filterBtns.forEach(btn => btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(c => c.classList.toggle('hide', f !== 'all' && c.dataset.category !== f));
+    }));
+
+    /* ===== Animaciones al hacer scroll ===== */
+    document.querySelectorAll('.stagger').forEach(group => {
+      [...group.children].forEach((el, i) => el.style.animationDelay = `${i * 90}ms`);
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ===== Lightbox ===== */
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCaption = document.getElementById('lbCaption');
+    let currentIndex = 0;
+
+    const visibleCards = () => cards.filter(c => !c.classList.contains('hide'));
+
+    function showImage(card) {
+      const thumb = card.querySelector('img');
+      lbImg.onerror = () => { lbImg.onerror = null; lbImg.src = thumb.src; };
+      lbImg.src = card.dataset.full || thumb.src;
+      lbImg.alt = thumb.alt;
+      lbCaption.textContent = card.querySelector('h3').textContent;
+    }
+    function openLightbox(card) {
+      currentIndex = visibleCards().indexOf(card);
+      showImage(card);
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function navLightbox(dir) {
+      const visibles = visibleCards();
+      currentIndex = (currentIndex + dir + visibles.length) % visibles.length;
+      showImage(visibles[currentIndex]);
+    }
+
+    document.querySelectorAll('.card-img').forEach(el =>
+      el.addEventListener('click', () => openLightbox(el.closest('.card')))
+    );
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lbPrev').addEventListener('click', () => navLightbox(-1));
+    document.getElementById('lbNext').addEventListener('click', () => navLightbox(1));
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navLightbox(-1);
+      if (e.key === 'ArrowRight') navLightbox(1);
+    });
+  </script>
 </body>
 </html>
